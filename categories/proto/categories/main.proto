@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package myou.srv.categories;
+
+message Project {
+	string id = 1;
+}
+
+service Categories {
+	rpc List(Filter) returns (CategoryList) {}
+}
+
+message Filter {
+	Project project = 1;
+	string name = 2;
+}
+
+message Category {
+	string id = 1;
+	string name = 2;
+}
+
+message CategoryList {
+	repeated Category categories = 1;
+}
