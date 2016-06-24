@@ -7,12 +7,24 @@ message Project {
 }
 
 service Categories {
-	rpc List(Filter) returns (CategoryList) {}
+	rpc List(Filter) returns (CategoryList);
+	rpc Put(Input) returns (Category);
+	rpc Delete(DeleteRequest) returns (Category);
+}
+
+message DeleteRequest {
+	Project project = 1;
+	string id = 2;
 }
 
 message Filter {
 	Project project = 1;
 	string name = 2;
+}
+
+message Input {
+	Project project = 1;
+	Category category = 2;
 }
 
 message Category {
